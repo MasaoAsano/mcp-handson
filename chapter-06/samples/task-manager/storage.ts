@@ -1,4 +1,4 @@
-// 第7章: タスク管理システム - ストレージ層
+// 第6章: タスク管理システム - ストレージ層
 // JSONファイルベースのデータ永続化
 import { promises as fs } from 'fs';
 import path from 'path';

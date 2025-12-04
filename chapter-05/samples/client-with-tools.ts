@@ -1,4 +1,4 @@
-// 第6章 サンプル: ツールを呼び出すクライアント
+// 第5章 サンプル: ツールを呼び出すクライアント
 // より高度なクライアント実装例
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';

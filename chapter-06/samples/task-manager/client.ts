@@ -1,4 +1,4 @@
-// 第7章: タスク管理システム - クライアント
+// 第6章: タスク管理システム - クライアント
 // タスク管理サーバーを操作するクライアント
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';

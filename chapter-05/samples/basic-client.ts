@@ -1,4 +1,4 @@
-// 第6章 サンプル: 基本的なMCPクライアント
+// 第5章 サンプル: 基本的なMCPクライアント
 // MCPサーバーに接続してリソースとツールを使用する
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';

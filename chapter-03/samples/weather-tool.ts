@@ -1,4 +1,4 @@
-// 第4章 サンプル: 天気情報ツール
+// 第3章 サンプル: 天気情報ツール
 // 天気情報を取得するツール（モック版）
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';

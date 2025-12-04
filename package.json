@@ -6,15 +6,15 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "ch00:traditional": "tsx chapter-00/traditional-api/server.ts",
-    "ch00:mcp": "tsx chapter-00/mcp-approach/server.ts",
-    "ch03:hello": "tsx chapter-03/samples/01-hello-server.ts",
-    "ch03:resources": "tsx chapter-03/samples/02-server-with-resources.ts",
-    "ch04:calculator": "tsx chapter-04/samples/server-with-tools.ts",
-    "ch05:prompts": "tsx chapter-05/samples/server-with-prompts.ts",
-    "ch06:client": "tsx chapter-06/samples/basic-client.ts",
-    "ch07:server": "tsx chapter-07/samples/task-manager/server.ts",
-    "ch07:client": "tsx chapter-07/samples/task-manager/client.ts"
+    "ch01:traditional": "tsx chapter-01/traditional-api/server.ts",
+    "ch01:mcp": "tsx chapter-01/mcp-approach/server.ts",
+    "ch02:hello": "tsx chapter-02/samples/01-hello-server.ts",
+    "ch02:resources": "tsx chapter-02/samples/02-server-with-resources.ts",
+    "ch03:calculator": "tsx chapter-03/samples/server-with-tools.ts",
+    "ch04:prompts": "tsx chapter-04/samples/server-with-prompts.ts",
+    "ch05:client": "tsx chapter-05/samples/basic-client.ts",
+    "ch06:server": "tsx chapter-06/samples/task-manager/server.ts",
+    "ch06:client": "tsx chapter-06/samples/task-manager/client.ts"
   },
   "keywords": [
     "mcp",

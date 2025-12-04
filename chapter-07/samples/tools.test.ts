@@ -1,4 +1,4 @@
-// 第8章: テストとデバッグ - ツールのテスト例
+// 第7章: テストとデバッグ - ツールのテスト例
 import { describe, it, expect } from '@jest/globals';
 
 // テスト対象のツール関数

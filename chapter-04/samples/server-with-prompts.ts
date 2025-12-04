@@ -1,4 +1,4 @@
-// 第5章 サンプル: プロンプトを統合したサーバー
+// 第4章 サンプル: プロンプトを統合したサーバー
 // リソース、ツール、プロンプトの全てを提供するサーバー
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';

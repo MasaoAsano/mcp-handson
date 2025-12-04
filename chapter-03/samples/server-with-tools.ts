@@ -1,4 +1,4 @@
-// 第4章 サンプル: ツールを統合したサーバー
+// 第3章 サンプル: ツールを統合したサーバー
 // 計算機と天気情報の両方を提供するサーバー
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';

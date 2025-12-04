@@ -1,4 +1,4 @@
-// 第4章 サンプル: 計算機ツール
+// 第3章 サンプル: 計算機ツール
 // 四則演算を行うMCPツール
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';

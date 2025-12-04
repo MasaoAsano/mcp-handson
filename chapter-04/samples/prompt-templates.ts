@@ -1,4 +1,4 @@
-// 第5章 サンプル: プロンプトテンプレート
+// 第4章 サンプル: プロンプトテンプレート
 // 再利用可能なプロンプトテンプレートを提供
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';

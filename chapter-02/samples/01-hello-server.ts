@@ -1,4 +1,4 @@
-// 第3章 サンプル1: 最もシンプルなMCPサーバー
+// 第2章 サンプル1: 最もシンプルなMCPサーバー
 // Hello Worldレベルの基本的なMCPサーバー
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';

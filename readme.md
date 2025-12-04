@@ -8,8 +8,8 @@
 
 このハンズオンを通じて、以下のスキルを習得できます：
 
-- MCPの基本概念とアーキテクチャの理解
 - **従来のREST APIとMCPの違いを体感**
+- MCPの基本概念とアーキテクチャの理解
 - MCPサーバーの実装方法
 - MCPクライアントとの接続方法
 - リソース、ツール、プロンプトの実装
@@ -22,7 +22,26 @@
 - **コマンドライン** の基本操作
 - **JSON** の基本的な理解
 
-## クイックスタート
+MCPの基本的な構成要素：
+- **サーバー（Server）**: 機能を提供する側
+- **クライアント（Client）**: 機能を利用する側
+- **リソース（Resources）**: 読み取り専用のデータ
+- **ツール（Tools）**: 実行可能な操作
+- **プロンプト（Prompts）**: LLM用のテンプレート
+
+## 環境セットアップ
+
+### 必要なツール
+
+```bash
+# Node.js (v18以上推奨)
+node --version
+
+# npmの確認
+npm --version
+```
+
+### プロジェクトのセットアップ
 
 ```bash
 # リポジトリをクローン
@@ -31,267 +50,373 @@ cd mcp-handson
 
 # 依存パッケージをインストール
 npm install
-
-# 第0章: 従来のAPIとMCPを比較してみる
-npm run ch00:mcp
-
-# 第3章: Hello Worldサーバーを起動
-npm run ch03:hello
-
-# 第7章: タスク管理システムを使ってみる
-npm run ch07:client
 ```
+
+これで準備完了です！
+
+## クイックスタート
+
+```bash
+# 第1章: 従来のAPIとMCPを比較してみる
+npm run ch01:mcp
+
+# 第2章: Hello Worldサーバーを起動
+npm run ch02:hello
+
+# 第6章: タスク管理システムを使ってみる
+npm run ch06:client
+```
+
+---
 
 ## ハンズオンの構成
 
-### 第0章: 従来のAPIとMCPの比較 ⭐️ **NEW!**
+### 第1章: 従来のAPIとMCPの比較 ⭐
 
 **所要時間: 30分**
 
-- 従来のREST API実装例（Express.js）
-- 同じ機能をMCPで実装
-- 両者の違いを明確に比較
+同じタスク管理機能を、従来のREST APIとMCPの両方で実装し、違いを明確に理解します。
 
-📝 **含まれる内容:**
-- `traditional-api/` - REST APIサーバーとクライアント
-- `mcp-approach/` - MCPサーバーとクライアント
+**学習内容:**
+- REST APIの実装（Express.js）
+- MCPでの同等実装
+- 両者の設計思想の違い
+- MCPの利点（自己記述性、AI統合）
+
+**含まれるファイル:**
+- `traditional-api/server.ts` - REST APIサーバー
+- `traditional-api/client.ts` - fetchを使ったクライアント
+- `mcp-approach/server.ts` - MCPサーバー
+- `mcp-approach/client.ts` - MCPクライアント
 - `comparison.md` - 詳細な比較ドキュメント
 
-### 第1章: MCPの基礎知識
-
-**所要時間: 20分**
-
-- MCPとは何か
-- MCPのアーキテクチャ
-- MCPの主要コンポーネント
-  - サーバー（Server）
-  - クライアント（Client）
-  - リソース（Resources）
-  - ツール（Tools）
-  - プロンプト（Prompts）
-
-### 第2章: 環境セットアップ
-
-**所要時間: 15分**
-
-#### 2.1 必要なツールのインストール
-
+**実行方法:**
 ```bash
-# Node.js (v18以上推奨)
-node --version
-
-# npm または yarn
-npm --version
+npm run ch01:traditional  # REST API版
+npm run ch01:mcp          # MCP版
 ```
 
-#### 2.2 プロジェクトの初期化
+---
 
-```bash
-mkdir mcp-handson
-cd mcp-handson
-npm init -y
-npm install @modelcontextprotocol/sdk
-```
-
-#### 2.3 TypeScript環境のセットアップ
-
-```bash
-npm install -D typescript @types/node
-npx tsc --init
-```
-
-### 第3章: 最初のMCPサーバーを作成する
-
-**所要時間: 30分**
-
-#### 3.1 シンプルなサーバーの実装
-
-**演習1: Hello World サーバー**
-
-- MCPサーバーの基本構造を理解
-- サーバーの起動と停止
-- ログの確認
-
-**成果物:**
-- `src/server-hello.ts` - 基本的なMCPサーバー
-
-#### 3.2 リソースの追加
-
-**演習2: 静的データを提供するリソース**
-
-- リソースの定義方法
-- リソース一覧の提供
-- リソースの読み取り実装
-
-**成果物:**
-- `src/server-with-resources.ts` - リソース機能を持つサーバー
-
-### 第4章: ツールの実装
-
-**所要時間: 45分**
-
-#### 4.1 基本的なツールの作成
-
-**演習3: 計算機ツール**
-
-- ツールの定義（スキーマ設計）
-- 入力パラメータの検証
-- ツールの実行ロジック
-
-**成果物:**
-- `src/tools/calculator.ts` - 四則演算を行うツール
-
-#### 4.2 外部APIを利用するツール
-
-**演習4: 天気情報取得ツール**
-
-- 外部APIとの連携
-- エラーハンドリング
-- レスポンスの整形
-
-**成果物:**
-- `src/tools/weather.ts` - 天気情報を取得するツール
-
-### 第5章: プロンプトの実装
-
-**所要時間: 30分**
-
-#### 5.1 動的プロンプトの作成
-
-**演習5: テンプレートプロンプト**
-
-- プロンプトの定義
-- 引数の受け取り
-- 動的なプロンプト生成
-
-**成果物:**
-- `src/prompts/templates.ts` - 再利用可能なプロンプトテンプレート
-
-### 第6章: MCPクライアントの実装
+### 第2章: 最初のMCPサーバー
 
 **所要時間: 40分**
 
-#### 6.1 クライアントの基本実装
+MCPサーバーの基本構造を理解し、リソースを提供する方法を学びます。
 
-**演習6: サーバーに接続するクライアント**
+**2.1 Hello Worldサーバー**
 
+最もシンプルなMCPサーバーを作成します。
+
+**サンプル:** `samples/01-hello-server.ts`
+- サーバーの基本構造
+- 1つのリソースの提供
+- リクエストハンドラーの設定
+
+**演習1:** 自分の名前を返すサーバーを作成
+- `exercises/exercise-01.md` - 演習ガイド
+- `exercises/exercise-01-template.ts` - テンプレート
+
+**2.2 複数リソースの提供**
+
+動的なURIと複数リソースの扱い方を学びます。
+
+**サンプル:** `samples/02-server-with-resources.ts`
+- 複数リソースの定義
+- 動的なURI（例: `books://item/{id}`）
+- パターンマッチング
+
+**演習2:** 好きな映画/アニメのカタログサーバーを作成
+- `exercises/exercise-02.md` - 演習ガイド
+- `exercises/exercise-02-template.ts` - テンプレート
+
+**実行方法:**
+```bash
+npm run ch02:hello      # Hello Worldサーバー
+npm run ch02:resources  # 書籍ライブラリサーバー
+```
+
+---
+
+### 第3章: ツールの実装
+
+**所要時間: 50分**
+
+状態を変更する操作（ツール）の実装方法を学びます。
+
+**3.1 基本的なツール**
+
+**サンプル:** `samples/calculator-tool.ts`
+- 四則演算ツール（add, subtract, multiply, divide）
+- 入力スキーマの定義
+- パラメータの検証
+- エラーハンドリング
+
+**3.2 複数ツールの統合**
+
+**サンプル:** `samples/weather-tool.ts` と `samples/server-with-tools.ts`
+- 天気情報取得ツール（モックデータ）
+- 複数ツールの統合サーバー
+- ツール間の連携
+
+**演習:** 文字列操作ツールを作成
+- `exercises/exercise-01.md` - 演習ガイド
+- `exercises/exercise-01-template.ts` - テンプレート
+- uppercase, lowercase, reverse の3つのツール
+
+**実行方法:**
+```bash
+npm run ch03:calculator  # 統合ツールサーバー
+```
+
+---
+
+### 第4章: プロンプトの実装
+
+**所要時間: 35分**
+
+LLM用の再利用可能なプロンプトテンプレートを作成します。
+
+**4.1 動的プロンプト**
+
+**サンプル:** `samples/prompt-templates.ts`
+- メール作成プロンプト（tone, recipient, subject対応）
+- コードレビュープロンプト（language, focus対応）
+- 記事要約プロンプト（length対応）
+- 引数を使った動的生成
+
+**4.2 リソース・ツール・プロンプトの統合**
+
+**サンプル:** `samples/server-with-prompts.ts`
+- すべての機能を持つサーバー
+- 統合的な使用例
+
+**実行方法:**
+```bash
+npm run ch04:prompts  # プロンプトサーバー
+```
+
+---
+
+### 第5章: クライアントの実装
+
+**所要時間: 40分**
+
+MCPサーバーと通信するクライアントを実装します。
+
+**5.1 基本的なクライアント**
+
+**サンプル:** `samples/basic-client.ts`
 - クライアントの初期化
 - サーバーへの接続
-- リソースの取得
+- ツールの呼び出し
+- リソースの読み取り
 
-**成果物:**
-- `src/client.ts` - MCPクライアント
+**5.2 高度なクライアント**
 
-#### 6.2 ツールの呼び出し
+**サンプル:** `samples/client-with-tools.ts`
+- バッチ処理
+- エラーハンドリング
+- 複数の操作を連続実行
 
-**演習7: クライアントからツールを実行**
+**実行方法:**
+```bash
+npm run ch05:client  # クライアントデモ
+```
 
-- ツールの検索
-- ツールの実行
-- 結果の処理
+---
 
-### 第7章: 実践プロジェクト
+### 第6章: 実践プロジェクト - タスク管理システム 🎯
 
 **所要時間: 90分**
 
-#### 実践演習: タスク管理システムの構築
+これまで学んだすべての要素を統合した、実用的なタスク管理システムを構築します。
 
-MCPを使用して、以下の機能を持つタスク管理システムを構築します：
+**システム構成:**
 
-**機能要件:**
-1. **リソース**
-   - タスク一覧の提供
-   - 個別タスクの詳細情報
+**データ層:** `samples/task-manager/types.ts` + `storage.ts`
+- Task型の定義
+- JSONファイルベースのストレージ
+- CRUD操作
+- 検索機能
 
-2. **ツール**
-   - タスクの追加
-   - タスクの更新
-   - タスクの削除
-   - タスクの検索
+**サーバー層:** `samples/task-manager/server.ts`
 
-3. **プロンプト**
-   - タスク作成用テンプレート
-   - レポート生成用テンプレート
+**リソース:**
+- `tasks://all` - 全タスクのリスト
+- `tasks://summary` - 統計情報
+- `tasks://item/{id}` - 個別タスク
 
-**成果物:**
-- `src/task-manager/server.ts` - タスク管理サーバー
-- `src/task-manager/client.ts` - タスク管理クライアント
-- `src/task-manager/storage.ts` - データ永続化層
+**ツール:**
+- `create_task` - タスク作成
+- `update_task` - タスク更新  
+- `delete_task` - タスク削除
+- `search_tasks` - 検索
 
-### 第8章: デバッグとテスト
+**プロンプト:**
+- `create_task_prompt` - タスク作成支援
+- `weekly_report` - 週次レポート生成
+
+**クライアント:** `samples/task-manager/client.ts`
+- デモ用クライアント
+- 全機能の使用例
+
+**機能:**
+- ✅ タスクの作成、更新、削除
+- ✅ ステータス管理（todo, in-progress, done）
+- ✅ 優先度設定（low, medium, high）
+- ✅ タグ機能
+- ✅ 検索とフィルタリング
+- ✅ 統計情報の表示
+
+**実行方法:**
+```bash
+npm run ch06:server  # サーバー起動
+npm run ch06:client  # クライアントデモ
+```
+
+---
+
+### 第7章: テストとデバッグ
 
 **所要時間: 30分**
 
-#### 8.1 デバッグ手法
+MCPアプリケーションのテストとデバッグ手法を学びます。
 
-- ログの活用
-- MCP Inspector の使用
-- エラートラブルシューティング
+**7.1 ユニットテスト**
 
-#### 8.2 テストの書き方
+**サンプル:** `samples/tools.test.ts`
+- Jestを使ったテスト
+- ツールのテスト例
+- テストの書き方
 
-**演習8: ユニットテストの作成**
+**実行方法:**
+```bash
+npm test  # テスト実行
+```
+
+**7.2 デバッグのベストプラクティス**
+
+- `console.error`を使ったログ出力
+- エラーメッセージの設計
+- トラブルシューティング
+
+**発展課題（時間があれば）:**
+- セキュリティ: 入力検証の強化
+- パフォーマンス: キャッシング戦略
+- Claude Desktopとの統合
+
+---
+
+## ディレクトリ構成
+
+```
+mcp-handson/
+├── readme.md                                  # このファイル
+├── package.json                               # プロジェクト設定
+├── tsconfig.json                              # TypeScript設定
+├── jest.config.js                             # Jestテスト設定
+├── .gitignore
+│
+├── chapter-01/                                # 第1章: API比較
+│   ├── traditional-api/
+│   │   ├── server.ts                      # REST APIサーバー
+│   │   └── client.ts                      # REST APIクライアント
+│   ├── mcp-approach/
+│   │   ├── server.ts                      # MCPサーバー
+│   │   └── client.ts                      # MCPクライアント
+│   └── comparison.md                      # 比較ドキュメント
+│
+├── chapter-02/                                # 第2章: 最初のサーバー
+│   ├── samples/
+│   │   ├── 01-hello-server.ts             # Hello World
+│   │   └── 02-server-with-resources.ts    # リソース付き
+│   └── exercises/
+│       ├── exercise-01.md                 # 演習ガイド
+│       ├── exercise-01-template.ts        # テンプレート
+│       ├── exercise-02.md
+│       └── exercise-02-template.ts
+│
+├── chapter-03/                                # 第3章: ツール
+│   ├── samples/
+│   │   ├── calculator-tool.ts             # 計算機
+│   │   ├── weather-tool.ts                # 天気情報
+│   │   └── server-with-tools.ts           # 統合サーバー
+│   └── exercises/
+│       ├── exercise-01.md                 # 文字列操作演習
+│       └── exercise-01-template.ts
+│
+├── chapter-04/                                # 第4章: プロンプト
+│   └── samples/
+│       ├── prompt-templates.ts            # テンプレート集
+│       └── server-with-prompts.ts         # 統合サーバー
+│
+├── chapter-05/                                # 第5章: クライアント
+│   └── samples/
+│       ├── basic-client.ts                # 基本クライアント
+│       └── client-with-tools.ts           # 高度な使用例
+│
+├── chapter-06/                                # 第6章: 実践プロジェクト
+│   └── samples/
+│       └── task-manager/
+│           ├── types.ts                   # 型定義
+│           ├── storage.ts                 # データ永続化
+│           ├── server.ts                  # タスク管理サーバー
+│           └── client.ts                  # クライアント
+│
+└── chapter-07/                                # 第7章: テスト
+    └── samples/
+        └── tools.test.ts                      # テスト例
+```
+
+## 各章の実行コマンド
 
 ```bash
-npm install -D jest @types/jest ts-jest
+# 第1章: API比較
+npm run ch01:traditional    # 従来のREST API
+npm run ch01:mcp            # MCPアプローチ
+
+# 第2章: 最初のサーバー
+npm run ch02:hello          # Hello Worldサーバー
+npm run ch02:resources      # リソース付きサーバー
+
+# 第3章: ツール
+npm run ch03:calculator     # 計算機 & 天気ツール
+
+# 第4章: プロンプト
+npm run ch04:prompts        # プロンプトテンプレート
+
+# 第5章: クライアント
+npm run ch05:client         # MCPクライアントデモ
+
+# 第6章: 実践プロジェクト
+npm run ch06:server         # タスク管理サーバー
+npm run ch06:client         # タスク管理クライアント
+
+# 第7章: テスト
+npm test                    # 全テスト実行
 ```
 
-**成果物:**
-- `tests/tools.test.ts` - ツールのテスト
-- `tests/server.test.ts` - サーバーのテスト
+## 学習の進め方
 
-### 第9章: 高度なトピック
+### 推奨学習パス
 
-**所要時間: 45分**
+1. **第1章** - MCPの違いを体感（30分）
+2. **第2章** - サーバーの基礎を習得（40分）
+3. **第3章** - ツールの実装を学ぶ（50分）
+4. **第4章** - プロンプトを理解（35分）
+5. **第5章** - クライアントを作成（40分）
+6. **第6章** - 実践プロジェクトに挑戦（90分）
+7. **第7章** - テストとデバッグ（30分）
 
-#### 9.1 セキュリティのベストプラクティス
+**合計所要時間: 約5時間15分**
 
-- 入力検証
-- 認証と認可
-- レート制限
+### 学習のコツ
 
-#### 9.2 パフォーマンス最適化
-
-- キャッシング戦略
-- 並列処理
-- リソース管理
-
-#### 9.3 実際のAIアシスタントとの統合
-
-- Claude Desktop との統合設定
-- 設定ファイルの作成
-- 動作確認
-
-**演習9: Claude Desktop へのMCPサーバー追加**
-
-設定ファイルの例:
-```json
-{
-  "mcpServers": {
-    "task-manager": {
-      "command": "node",
-      "args": ["path/to/your/server.js"]
-    }
-  }
-}
-```
-
-### 第10章: まとめと次のステップ
-
-**所要時間: 15分**
-
-#### 学習の振り返り
-
-- MCPの主要概念の復習
-- 実装したコンポーネントの確認
-- ベストプラクティスのまとめ
-
-#### 次のステップ
-
-- より複雑なツールの実装
-- 複数のMCPサーバーの連携
-- プロダクション環境へのデプロイ
-- コミュニティへの貢献
+✅ **必ずサンプルを実行する**: 読むだけでなく、実際に動かしてみましょう
+✅ **演習に取り組む**: 手を動かすことで理解が深まります
+✅ **段階的に進める**: 焦らず、1章ずつ確実に理解しましょう
+✅ **エラーを恐れない**: エラーは学習の機会です
 
 ## 参考リソース
 
@@ -311,127 +436,52 @@ npm install -D jest @types/jest ts-jest
 - [MCP Discord サーバー](https://discord.gg/mcp)
 - [GitHub Discussions](https://github.com/modelcontextprotocol/specification/discussions)
 
-## ディレクトリ構成
-
-```
-mcp-handson/
-├── readme.md                                  # このファイル
-├── package.json                               # プロジェクト設定
-├── tsconfig.json                              # TypeScript設定
-├── jest.config.js                             # Jestテスト設定
-├── .gitignore
-│
-├── chapter-00/                                # 第0章: API比較
-│   ├── traditional-api/
-│   │   ├── server.ts                      # REST APIサーバー
-│   │   └── client.ts                      # REST APIクライアント
-│   ├── mcp-approach/
-│   │   ├── server.ts                      # MCPサーバー
-│   │   └── client.ts                      # MCPクライアント
-│   └── comparison.md                      # 比較ドキュメント
-│
-├── chapter-03/                                # 第3章: 最初のサーバー
-│   ├── samples/
-│   │   ├── 01-hello-server.ts             # Hello World
-│   │   └── 02-server-with-resources.ts    # リソース付き
-│   └── exercises/
-│       ├── exercise-01.md                 # 演習ガイド
-│       ├── exercise-01-template.ts        # テンプレート
-│       ├── exercise-02.md
-│       └── exercise-02-template.ts
-│
-├── chapter-04/                                # 第4章: ツール
-│   ├── samples/
-│   │   ├── calculator-tool.ts             # 計算機
-│   │   ├── weather-tool.ts                # 天気情報
-│   │   └── server-with-tools.ts           # 統合サーバー
-│   └── exercises/
-│       ├── exercise-01.md                 # 文字列操作演習
-│       └── exercise-01-template.ts
-│
-├── chapter-05/                                # 第5章: プロンプト
-│   └── samples/
-│       ├── prompt-templates.ts            # テンプレート集
-│       └── server-with-prompts.ts         # 統合サーバー
-│
-├── chapter-06/                                # 第6章: クライアント
-│   └── samples/
-│       ├── basic-client.ts                # 基本クライアント
-│       └── client-with-tools.ts           # 高度な使用例
-│
-├── chapter-07/                                # 第7章: 実践プロジェクト
-│   └── samples/
-│       └── task-manager/
-│           ├── types.ts                   # 型定義
-│           ├── storage.ts                 # データ永続化
-│           ├── server.ts                  # タスク管理サーバー
-│           └── client.ts                  # クライアント
-│
-└── chapter-08/                                # 第8章: テスト
-    └── samples/
-        └── tools.test.ts                      # テスト例
-```
-
-## 各章の実行コマンド
-
-```bash
-# 第0章
-npm run ch00:traditional    # 従来のREST API
-npm run ch00:mcp            # MCPアプローチ
-
-# 第3章
-npm run ch03:hello          # Hello Worldサーバー
-npm run ch03:resources      # リソース付きサーバー
-
-# 第4章
-npm run ch04:calculator     # 計算機 & 天気ツール
-
-# 第5章
-npm run ch05:prompts        # プロンプトテンプレート
-
-# 第6章
-npm run ch06:client         # MCPクライアントデモ
-
-# 第7章
-npm run ch07:server         # タスク管理サーバー
-npm run ch07:client         # タスク管理クライアント
-
-# テスト
-npm test                    # 全テスト実行
-```
-
 ## トラブルシューティング
 
 ### よくある問題と解決方法
 
-#### 1. サーバーが起動しない
+#### 1. パッケージのインストールエラー
 
-```bash
-# ポートが既に使用されている場合
-Error: listen EADDRINUSE: address already in use
-```
-
-**解決策:** 別のポートを使用するか、既存のプロセスを終了する
-
-#### 2. 型エラーが発生する
-
-```bash
-# TypeScriptの型定義が見つからない
-Cannot find module '@modelcontextprotocol/sdk'
-```
-
-**解決策:**
 ```bash
 npm install @modelcontextprotocol/sdk
-npm install -D @types/node
+npm install -D @types/node typescript
 ```
 
-#### 3. クライアントがサーバーに接続できない
+#### 2. サーバーが起動しない
 
-**解決策:**
+- Node.js のバージョンを確認（v18以上推奨）
+- `node --version`
+
+#### 3. TypeScriptのエラー
+
+```bash
+npx tsc --noEmit  # 型チェックのみ実行
+```
+
+#### 4. クライアントが接続できない
+
 - サーバーが正常に起動しているか確認
-- 接続設定（ホスト、ポート）が正しいか確認
-- ファイアウォール設定を確認
+- ファイルパスが正しいか確認
+
+## 次のステップ
+
+このハンズオンを完了したら、以下に挑戦してみましょう：
+
+🚀 **より複雑なツールの実装**
+- ファイル操作ツール
+- データベース連携ツール
+
+🚀 **実際のAIアシスタントとの統合**
+- Claude Desktopへの組み込み
+- 設定ファイルの作成
+
+🚀 **プロダクション環境へのデプロイ**
+- セキュリティの強化
+- パフォーマンスの最適化
+
+🚀 **コミュニティへの貢献**
+- 自作サーバーの公開
+- ドキュメントの改善
 
 ## ライセンス
 

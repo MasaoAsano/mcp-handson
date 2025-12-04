@@ -1,4 +1,4 @@
-// 第3章 サンプル2: リソースを提供するサーバー
+// 第2章 サンプル2: リソースを提供するサーバー
 // 複数のリソースと動的なURIを扱う
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';

@@ -1,4 +1,4 @@
-// 第7章: タスク管理システム - 完全なサーバー実装
+// 第6章: タスク管理システム - 完全なサーバー実装
 // リソース、ツール、プロンプトを統合したタスク管理サーバー
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';

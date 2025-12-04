@@ -112,7 +112,7 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
 ## 🧪 テスト方法
 
 ```bash
-tsx chapter-03/exercises/exercise-02-template.ts
+npx tsx chapter-02/exercises/exercise-02-template.ts
 ```
 
 ## ✅ 完成の確認

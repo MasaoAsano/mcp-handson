@@ -83,7 +83,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 ## 🧪 テスト方法
 
 ```bash
-tsx chapter-04/exercises/exercise-01-template.ts
+npx tsx chapter-03/exercises/exercise-01-template.ts
 ```
 
 ## ✅ 完成の確認

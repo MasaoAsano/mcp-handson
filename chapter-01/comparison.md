@@ -39,7 +39,7 @@ const response = await fetch('http://localhost:3000/tasks', {
 npm run ch00:traditional
 
 # 別のターミナルでクライアントを実行
-tsx chapter-00/traditional-api/client.ts
+npx tsx chapter-01/traditional-api/client.ts
 ```
 
 ---

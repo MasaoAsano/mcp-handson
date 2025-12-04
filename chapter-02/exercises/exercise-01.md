@@ -91,7 +91,7 @@ main().catch(console.error);
 
 ```bash
 # サーバーを起動（別のMCPクライアントから接続できます）
-tsx chapter-03/exercises/exercise-01-template.ts
+npx tsx chapter-02/exercises/exercise-01-template.ts
 ```
 
 ## ✅ 完成の確認

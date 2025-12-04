@@ -20,7 +20,7 @@ async function demo() {
     // サーバーに接続
     const transport = new StdioClientTransport({
         command: 'tsx',
-        args: ['chapter-00/mcp-approach/server.ts'],
+        args: ['chapter-01/mcp-approach/server.ts'],
     });
 
     await client.connect(transport);

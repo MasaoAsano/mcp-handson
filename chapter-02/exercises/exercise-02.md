@@ -109,19 +109,73 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
 });
 ```
 
-## 🧪 テスト方法
+## 🧪 動作確認の方法
+
+### ステップ1: サーバーを実装
+
+`exercise-02-template.ts` を編集して、課題の要件を実装します。
+
+### ステップ2: テストクライアントで確認
+
+テストクライアントを使って動作確認します：
 
 ```bash
-npx tsx chapter-02/exercises/exercise-02-template.ts
+# chapter-02/exercises ディレクトリで実行
+cd chapter-02/exercises
+npx tsx test-client.ts exercise-02-template.ts
+```
+
+### 期待される出力
+
+```
+🧪 テスト開始: exercise-02-template.ts
+
+✅ サーバーに接続しました
+
+📋 利用可能なリソース:
+   1. メディアカタログ
+      URI: media://catalog
+      説明: 全作品のリスト
+   2. 作品タイトル1
+      URI: media://item/1
+      説明: 監督名 (2024)
+   3. 作品タイトル2
+      URI: media://item/2
+      説明: 監督名 (2023)
+   （以下、作品数分続く）
+
+📖 リソースの内容:
+
+   メディアカタログ (media://catalog):
+   [
+     {
+       "id": "1",
+       "title": "...",
+       "creator": "...",
+       "year": 2024,
+       "genre": "..."
+     },
+     ...
+   ]
+
+   作品タイトル1 (media://item/1):
+   {
+     "id": "1",
+     "title": "...",
+     ...
+   }
+
+✅ テスト完了
 ```
 
 ## ✅ 完成の確認
 
-以下ができれば完成です：
-- [ ] 少なくとも3つの作品データがある
-- [ ] `media://catalog` リソースで全作品が取得できる
-- [ ] `media://item/1` などで個別作品が取得できる
-- [ ] 存在しないIDの場合、適切なエラーが返る
+以下がすべて表示されれば完成です：
+- [ ] 少なくとも3つの作品がリソース一覧に表示される
+- [ ] `media://catalog` リソースで全作品のJSON配列が取得できる
+- [ ] `media://item/1` などで個別作品のJSONが取得できる
+- [ ] すべてのリソースが正常に読み取れる
+- [ ] エラーなくテストが完了する
 
 ## 🎓 学習ポイント
 

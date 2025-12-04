@@ -85,24 +85,53 @@ async function main() {
 main().catch(console.error);
 ```
 
-## 🧪 テスト方法
+## 🧪 動作確認の方法
 
-サンプルサーバーと同じように実行します：
+### ステップ1: サーバーを実装
+
+`exercise-01-template.ts` を編集して、課題の要件を実装します。
+
+### ステップ2: テストクライアントで確認
+
+テストクライアントを使って動作確認します：
 
 ```bash
-# サーバーを起動（別のMCPクライアントから接続できます）
-npx tsx chapter-02/exercises/exercise-01-template.ts
+# chapter-02/exercises ディレクトリで実行
+cd chapter-02/exercises
+npx tsx test-client.ts exercise-01-template.ts
+```
+
+### 期待される出力
+
+```
+🧪 テスト開始: exercise-01-template.ts
+
+✅ サーバーに接続しました
+
+📋 利用可能なリソース:
+   1. My Name
+      URI: profile://name
+      説明: 自分の名前
+
+📖 リソースの内容:
+
+   My Name (profile://name):
+   あなたの名前
+
+✅ テスト完了
 ```
 
 ## ✅ 完成の確認
 
-以下ができれば完成です：
-- [ ] サーバーが正常に起動する
+以下がすべて表示されれば完成です：
+- [ ] サーバーに正常に接続できる
 - [ ] `profile://name` リソースが一覧に表示される
-- [ ] リソースを読み取ると自分の名前が返ってくる
+- [ ] リソースの内容として自分の名前が表示される
+- [ ] エラーなくテストが完了する
 
 ## 🎓 学習ポイント
 
 - MCPサーバーの基本構造（Server、Transport、RequestHandler）
 - リソースの概念（URI、mimeType、contents）
 - リクエストハンドラーの設定方法
+- クライアントからの接続とリソース読み取り
